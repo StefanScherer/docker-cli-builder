@@ -9,7 +9,7 @@ on_finish:
 
 environment:
   APPVEYOR_RDP_PASSWORD:
-    secure: BJRD3auY1SXaT2xOuMayMex0hcMfNo2OcPgmOLtXn8U=
+    secure: yn73CHgZq4yvPt+v6fFUvKKA4YPZ5fyQ1JzctBZ9298=
   GOPATH: c:\gopath
   GOVERSION: 1.10.3
   DEPVERSION: v0.4.1
