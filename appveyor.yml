@@ -1,6 +1,11 @@
 version: "{build}"
 
-clone_folder: c:\gopath\src\github.com\docker\cli
+# Uncomment to debug via RDP
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 environment:
   GOPATH: c:\gopath
@@ -13,6 +18,8 @@ install:
   - msiexec /i go%GOVERSION%.windows-amd64.msi /q
   - go version
   - go env
+  - git clone -q --branch=master https://github.com/docker/cli.git c:\gopath\src\github.com\docker\cli
+  - cd c:\gopath\src\github.com\docker\cli
 
 build_script:
   - ps: .\scripts\make.ps1 -Binary
@@ -24,7 +31,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: FA0xahKGq6AVJEOd1Oen0xPbbM3C9qETfDj69A93xeVyLDlQazwyJa1Si6fn8OMo
-  artifact: /.*\.exe/
+  artifact: c:\gopath\bin\docker.exe
   draft: false
   prerelease: false
   on:
