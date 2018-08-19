@@ -17,8 +17,7 @@ install:
 build_script:
   - ps: .\scripts\make.ps1 -Binary
 
-test:
-  - off
+test: off
 
 deploy:
   release: $(appveyor_build_version)
