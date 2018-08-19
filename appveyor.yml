@@ -25,13 +25,13 @@ install:
   - cd c:\gopath\src\github.com\docker\cli
   - git checkout v%DOCKER_VERSION%
   - ps: |
-      'package cli
+      "package cli
       var (
-        PlatformName = ""
-        Version      = "18.06.0-ce"
-        GitCommit    = "0ffa825"
-        BuildTime    = "Wed Jul 18 19:05:26 2018"
-      )' | Out-File -Encoding Ascii "C:\gopath\src\github.com\docker\cli\cli\version.go"
+        PlatformName = """"
+        Version      = ""$env:DOCKER_VERSION""
+        GitCommit    = ""$(git rev-parse --short HEAD)""
+        BuildTime    = ""$(get-date)""
+      )" | Out-File -Encoding Ascii "C:\gopath\src\github.com\docker\cli\cli\version.go"
 
 build_script:
   - ps: .\scripts\make.ps1 -Binary
