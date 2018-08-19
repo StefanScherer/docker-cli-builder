@@ -27,12 +27,14 @@ install:
 
 build_script:
   - ps: .\scripts\make.ps1 -Binary
+  - copy C:\gopath\src\github.com\docker\cli\build\docker.exe C:\projects\docker-cli-builder\
 
 test_script:
-  - C:\gopath\src\github.com\docker\cli\build\docker.exe --version
+  - cd C:\projects\docker-cli-builder
+  - .\docker.exe --version
 
 artifacts:
-- path: C:\gopath\src\github.com\docker\cli\build\docker.exe
+- path: .\docker.exe
   name: Binary
 
 deploy:
@@ -40,7 +42,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: FA0xahKGq6AVJEOd1Oen0xPbbM3C9qETfDj69A93xeVyLDlQazwyJa1Si6fn8OMo
-  artifact: C:\gopath\src\github.com\docker\cli\build\docker.exe
+  artifact: .\docker.exe
   draft: false
   prerelease: false
   on:
