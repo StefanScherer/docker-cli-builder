@@ -8,6 +8,8 @@ on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 environment:
+  APPVEYOR_RDP_PASSWORD:
+    secure: MoOMmvXEwnTFkeUm5zBt7UYPwpHvAXfdmacMU+u9PQw=
   GOPATH: c:\gopath
   GOVERSION: 1.10.3
   DEPVERSION: v0.4.1
