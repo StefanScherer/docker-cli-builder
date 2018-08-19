@@ -26,7 +26,7 @@ install:
   - git checkout v%DOCKER_VERSION%
 
 build_script:
-  - ps: .\scripts\make.ps1 -Client
+  - ps: .\scripts\make.ps1 -Binary
   - copy C:\gopath\src\github.com\docker\cli\build\docker.exe C:\projects\docker-cli-builder\
 
 test_script:
