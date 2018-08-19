@@ -26,7 +26,8 @@ install:
 build_script:
   - ps: .\scripts\make.ps1 -Binary
 
-test: off
+test:
+  - C:\gopath\src\github.com\docker\cli\build\docker.exe --version
 
 deploy:
   release: $(appveyor_build_version)
