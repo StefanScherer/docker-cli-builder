@@ -33,7 +33,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: FA0xahKGq6AVJEOd1Oen0xPbbM3C9qETfDj69A93xeVyLDlQazwyJa1Si6fn8OMo
-  artifact: c:\gopath\bin\docker.exe
+  artifact: C:\gopath\src\github.com\docker\cli\build\docker.exe
   draft: false
   prerelease: false
   on:
