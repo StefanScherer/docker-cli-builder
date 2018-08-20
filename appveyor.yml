@@ -49,7 +49,7 @@ deploy:
   provider: GitHub
   description: ' '
   auth_token:
-    secure: i0JeWI9sLIH9QoH1a+fcD6AxWTazny8fjOsnG6jl/TI9m+QMec3QpBk+idP4drvt
+    secure: hAIMIlM7Gu2wsNymUr0bBGTWE/64xRo4bDHAQkiiSHS8zptfP+CLsjo3G+K1CJrB
   on:
     branch: master
     appveyor_repo_tag: true
