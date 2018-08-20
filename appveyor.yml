@@ -46,14 +46,10 @@ artifacts:
   name: Binary
 
 deploy:
-  release: $(appveyor_build_version)
-  description: Release
   provider: GitHub
+  description: ' '
   auth_token:
     secure: i0JeWI9sLIH9QoH1a+fcD6AxWTazny8fjOsnG6jl/TI9m+QMec3QpBk+idP4drvt
-  artifact: .\docker.exe
-  draft: false
-  prerelease: false
   on:
-    branch: master                 # release from master branch only
-    appveyor_repo_tag: true        # deploy on tag push only
+    branch: master
+    appveyor_repo_tag: true
