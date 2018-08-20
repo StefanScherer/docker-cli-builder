@@ -49,7 +49,7 @@ deploy:
   release: $(appveyor_build_version)
   provider: GitHub
   auth_token:
-    secure: FA0xahKGq6AVJEOd1Oen0xPbbM3C9qETfDj69A93xeVyLDlQazwyJa1Si6fn8OMo
+    secure: i0JeWI9sLIH9QoH1a+fcD6AxWTazny8fjOsnG6jl/TI9m+QMec3QpBk+idP4drvt
   artifact: .\docker.exe
   draft: false
   prerelease: false
