@@ -13,7 +13,7 @@ environment:
   GOPATH: c:\gopath
   GOVERSION: 1.10.3
   DEPVERSION: v0.4.1
-  DOCKER_VERSION: 18.06.1-ce
+  DOCKER_VERSION: 18.09.0
 
 install:
   - rmdir c:\go /s /q
