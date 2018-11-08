@@ -32,6 +32,7 @@ install:
         GitCommit    = ""$(git rev-parse --short HEAD)""
         BuildTime    = ""$(get-date)""
       )" | Out-File -Encoding Ascii "C:\gopath\src\github.com\docker\cli\cli\version.go"
+  - choco install -y mingw
 
 build_script:
   - ps: .\scripts\make.ps1 -Binary
