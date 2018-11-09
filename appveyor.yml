@@ -1,4 +1,5 @@
 version: "{build}"
+image: Visual Studio 2017
 
 # Uncomment to debug via RDP
 #init:
@@ -10,33 +11,13 @@ version: "{build}"
 environment:
   APPVEYOR_RDP_PASSWORD:
     secure: yn73CHgZq4yvPt+v6fFUvKKA4YPZ5fyQ1JzctBZ9298=
-  GOPATH: c:\gopath
-  GOVERSION: 1.10.3
-  DEPVERSION: v0.4.1
-  DOCKER_VERSION: 18.09.0
 
 install:
-  - rmdir c:\go /s /q
-  - appveyor DownloadFile https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.msi
-  - msiexec /i go%GOVERSION%.windows-amd64.msi /q
-  - go version
-  - go env
-  - git clone -q --branch=master https://github.com/docker/cli.git c:\gopath\src\github.com\docker\cli
-  - cd c:\gopath\src\github.com\docker\cli
-  - git checkout v%DOCKER_VERSION%
-  - ps: |
-      "package cli
-      var (
-        PlatformName = """"
-        Version      = ""$env:DOCKER_VERSION""
-        GitCommit    = ""$(git rev-parse --short HEAD)""
-        BuildTime    = ""$(get-date)""
-      )" | Out-File -Encoding Ascii "C:\gopath\src\github.com\docker\cli\cli\version.go"
-  - choco install -y mingw
 
 build_script:
-  - ps: .\scripts\make.ps1 -Binary
-  - copy C:\gopath\src\github.com\docker\cli\build\docker.exe C:\projects\docker-cli-builder\
+  - ps: docker build -t docker-cli-builder .
+  - ps: docker create docker-cli-builder
+  - ps: docker cp $(docker ps -ql):/gopath/src/github.com/docker/cli/build/docker.exe C:\projects\docker-cli-builder\
 
 test_script:
   - cd C:\projects\docker-cli-builder
