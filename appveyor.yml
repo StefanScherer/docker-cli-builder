@@ -16,8 +16,8 @@ install:
 
 build_script:
   - ps: docker build -t docker-cli-builder .
-  - ps: docker create docker-cli-builder
-  - ps: docker cp $(docker ps -ql):/gopath/src/github.com/docker/cli/build/docker.exe C:\projects\docker-cli-builder\
+  - ps: docker create --name cli docker-cli-builder
+  - ps: docker cp cli:/gopath/src/github.com/docker/cli/build/docker.exe C:\projects\docker-cli-builder\
 
 test_script:
   - cd C:\projects\docker-cli-builder
