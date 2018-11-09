@@ -5,6 +5,7 @@ ENV GOVERSION 1.10.3
 ENV DEPVERSION v0.4.1
 ENV DOCKER_VERSION 18.09.0
 
+ENV chocolateyUseWindowsCompression false
 RUN powershell iex(iwr -useb https://chocolatey.org/install.ps1)
 RUN choco install -y golang -version %GOVERSION%
 RUN choco install -y git
