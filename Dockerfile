@@ -7,6 +7,7 @@ ENV DOCKER_VERSION 18.09.0
 
 ENV chocolateyUseWindowsCompression false
 RUN powershell iex(iwr -useb https://chocolatey.org/install.ps1)
+RUN choco feature disable --name showDownloadProgress
 RUN choco install -y golang -version %GOVERSION%
 RUN choco install -y git
 RUN choco install -y mingw
