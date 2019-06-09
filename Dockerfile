@@ -13,7 +13,7 @@ RUN choco install -y git
 RUN choco install -y mingw
 
 ENV GOPATH C:\gopath
-RUN git clone -q --branch=v%DOCKER_VERSION% https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
+RUN git clone -q --branch=v%DOCKER_VERSION% --single-branch https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
 WORKDIR C:\gopath\src\github.com\docker\cli
 COPY setversion.ps1 setversion.ps1
 RUN powershell -File .\setversion.ps1
