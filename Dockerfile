@@ -1,9 +1,9 @@
 # escape=`
 FROM microsoft/windowsservercore
 
-ENV GOVERSION 1.10.3
+ENV GOVERSION 1.10.8
 ENV DEPVERSION v0.4.1
-ENV DOCKER_VERSION 18.09.0
+ENV DOCKER_VERSION 18.09.6
 
 ENV chocolateyUseWindowsCompression false
 RUN powershell iex(iwr -useb https://chocolatey.org/install.ps1)
@@ -13,9 +13,8 @@ RUN choco install -y git
 RUN choco install -y mingw
 
 ENV GOPATH C:\gopath
-RUN git clone -q --branch=master https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
+RUN git clone -q --branch=v%DOCKER_VERSION% --single-branch https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
 WORKDIR C:\gopath\src\github.com\docker\cli
-RUN git checkout v%DOCKER_VERSION%
 COPY setversion.ps1 setversion.ps1
 RUN powershell -File .\setversion.ps1
 RUN type C:\gopath\src\github.com\docker\cli\cli\version.go
