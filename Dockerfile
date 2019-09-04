@@ -15,8 +15,6 @@ RUN choco install -y mingw
 ENV GOPATH C:\gopath
 RUN git clone -q --branch=v%DOCKER_VERSION% --single-branch https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
 WORKDIR C:\gopath\src\github.com\docker\cli
-COPY setversion.ps1 setversion.ps1
-RUN powershell -File .\setversion.ps1
-RUN type C:\gopath\src\github.com\docker\cli\cli\version.go
+RUN setx VERSION "%DOCKER_VERSION%"
 RUN powershell -File .\scripts\make.ps1 -Binary
 RUN dir C:\gopath\src\github.com\docker\cli\build\docker.exe
