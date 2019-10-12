@@ -1,7 +1,7 @@
 # escape=`
 FROM microsoft/windowsservercore
 
-ENV GOVERSION 1.12.5
+ENV GOVERSION 1.12.10
 ENV DEPVERSION v0.4.1
 ENV DOCKER_VERSION 19.03.1
 
