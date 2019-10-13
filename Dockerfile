@@ -1,9 +1,9 @@
 # escape=`
 FROM microsoft/windowsservercore
 
-ENV GOVERSION 1.12.5
+ENV GOVERSION 1.12.10
 ENV DEPVERSION v0.4.1
-ENV DOCKER_VERSION 19.03.1
+ENV DOCKER_VERSION 19.03.3
 
 ENV chocolateyUseWindowsCompression false
 RUN powershell iex(iwr -useb https://chocolatey.org/install.ps1)
