@@ -6,7 +6,7 @@ ENV DEPVERSION v0.4.1
 ENV DOCKER_VERSION 19.03.12
 
 ENV chocolateyUseWindowsCompression false
-RUN powershell iex(iwr -SkipCertificateCheck -useb https://chocolatey.org/install.ps1)
+RUN powershell iex(iwr -useb https://chocolatey.org/install.ps1)
 RUN choco feature disable --name showDownloadProgress
 RUN choco install -y golang -version %GOVERSION%
 RUN choco install -y git
