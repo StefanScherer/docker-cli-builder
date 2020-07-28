@@ -1,5 +1,5 @@
 # escape=`
-FROM mcr.microsoft.com/windows/servercore:ltsc2016
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 ENV GOVERSION 1.13.12
 ENV DEPVERSION v0.4.1
