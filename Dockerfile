@@ -1,7 +1,7 @@
 # escape=`
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-ENV GOVERSION 1.18.5
+ENV GOVERSION 1.17.11
 ENV DEPVERSION v0.4.1
 ENV DOCKER_VERSION 20.10.17
 
