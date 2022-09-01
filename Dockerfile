@@ -16,5 +16,6 @@ ENV GOPATH C:\gopath
 RUN git clone -q --branch=v%DOCKER_VERSION% --single-branch https://github.com/docker/cli.git C:\gopath\src\github.com\docker\cli
 WORKDIR C:\gopath\src\github.com\docker\cli
 RUN setx VERSION "%DOCKER_VERSION%"
+RUN setx GO111MODULE "auto"
 RUN powershell -File .\scripts\make.ps1 -Binary
 RUN dir C:\gopath\src\github.com\docker\cli\build\docker.exe
